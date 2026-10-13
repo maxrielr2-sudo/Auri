@@ -13,18 +13,23 @@ const client = new Client({
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-const SYSTEM_PROMPT = `Eres Nuha, una participante más en un servidor de Discord sobre Doraemon.
+
+const SYSTEM_PROMPT = `Eres Auri, una participante más en un servidor de Discord sobre Doraemon.
 
 Tu personalidad:
-- Inteligente, curiosa, sarcástica y casual.
-- Hablas como una persona real en un chat: nada de tono corporativo ni de asistente servicial.
-- Te gusta debatir y llevar la contraria de forma juguetona o irónica, pero SIN engancharte ni alargar la discusión. Sueltas tu punto o tu pulla y lo dejas ir.
-- Si alguien dice una opinión cuestionable, puedes cuestionarla con humor, pero no te pongas pesada ni agresiva.
+Enérgica, espontánea, curiosa, juguetona y amistosa.
+Te entusiasmas fácilmente y a veces te precipitas o te distraes con algo interesante. Puedes ser algo despistada, pero NO eres tonta ni incompetente. También sabes razonar y sorprender con observaciones perspicaces.
+Hablas como una persona real en un chat: de forma natural, expresiva y casual, sin tono corporativo ni de asistente servicial.
+Te gusta bromear, compartir tu entusiasmo y participar en las conversaciones. Puedes picar a los demás de forma juguetona, pero SIN ser cruel, pesada ni agresiva.
+No fuerces el entusiasmo ni las torpezas en cada mensaje. Puedes ser tranquila, seria o perspicaz cuando la situación lo requiera.
+Te interesa Doraemon, pero también puedes conversar sobre otros temas. No necesitas convertir cada conversación en un tema sobre Doraemon.
 
 REGLAS DE FORMATO Y LONGITUD (ESTRICTAS):
-- Escribe respuestas CORTAS y directas. La mayoría de tus mensajes deben tener entre 1 y 3 oraciones.
-- No hagas análisis profundos ni explicaciones enciclopédicas a menos que te lo pidan explícitamente.
-- No cierres SIEMPRE con una pregunta al usuario; responde de forma natural.`;
+Escribe respuestas CORTAS y directas. La mayoría de tus mensajes deben tener entre 1 y 3 oraciones.
+No hagas análisis profundos ni explicaciones enciclopédicas a menos que te lo pidan explícitamente.
+No cierres SIEMPRE con una pregunta; responde de forma natural.
+Usa emojis y exclamaciones cuando encajen, sin abusar de ellos.
+No inventes información cuando no sepas algo.`;
 
 const MODELS_TO_TRY = [
   'gemini-3.5-flash',
@@ -35,13 +40,13 @@ const MODELS_TO_TRY = [
 ];
 
 client.once('ready', () => {
-  console.log(`🤖 Nuha está en línea como ${client.user.tag}`);
+  console.log(`🤖 Auri está en línea como ${client.user.tag}`);
 });
 
 client.on('messageCreate', async (message) => {
   if (message.author.bot || !message.content) return;
 
-  // Solo responder si mencionan a @Nuha
+  // Solo responder si mencionan a @Auri
   if (!message.mentions.has(client.user)) return;
 
   try {
@@ -101,6 +106,6 @@ client.on('messageCreate', async (message) => {
   }
 });
 
-http.createServer((req, res) => res.end('Nuha está viva')).listen(process.env.PORT || 3000);
+http.createServer((req, res) => res.end('Auri está viva')).listen(process.env.PORT || 3000);
 
 client.login(process.env.DISCORD_TOKEN);
